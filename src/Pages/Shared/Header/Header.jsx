@@ -111,9 +111,9 @@ const Header = () => {
                 tabIndex={0}
                 onMouseEnter={() => setAccountInfo(true)}
                 onClick={() => setAccountInfo(!showAccountInfo)}
-                className="btn bg-transparent hover:bg-transparent hover:border-white btn-circle avatar border-2 border-white flex justify-between items-center w-max gap-1 h-16 p-1"
+                className="btn bg-transparent hover:bg-transparent hover:border-white btn-circle avatar border-2 border-white flex justify-between items-center w-max gap-1 h-15 p-1"
               >
-                <div className="w-12 rounded-full">
+                <div className="w-9 rounded-full">
                   {user?.photoURL !== null ? (
                     <>
                       <img src={user.photoURL} />

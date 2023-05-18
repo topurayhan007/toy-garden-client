@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const Register = () => {
-  const { createUser, updateUserInfo, logOut } = useContext(AuthContext);
+  const { createUser, updateUserInfo, logOut, signInWithGoogle } =
+    useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -70,6 +73,23 @@ const Register = () => {
       });
   };
 
+  // Handle Google PopUp Login
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+        toast("User created successfully!", {
+          position: "top-center",
+          type: "success",
+        });
+
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <div className="mt-10 pb-10  px-3 md:px-0">
       <div className="card flex-shrink-0 w-full border border-purple-100 max-w-md mx-auto mt-16 drop-shadow-sm shadow-md bg-[#fffeff]">
@@ -79,7 +99,7 @@ const Register = () => {
           <div className="form-control mb-4 ">
             <div className="">
               <button
-                onClick={""}
+                onClick={handleGoogleSignIn}
                 className="btn btn-ghost w-full bg-transparent rounded-full border-[#722495] border-2 text-black font-bold px-8 normal-case text-base"
               >
                 <FcGoogle className="me-3 text-2xl" /> Sign Up with Google
