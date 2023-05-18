@@ -7,8 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 const Main = () => {
   return (
     <div className=" bg-white">
-      <Header></Header>
-      <div className="max-w-screen-xl mx-auto">
+      <div className="">
+        <Header></Header>
         <Outlet></Outlet>
         <Footer></Footer>
         <ToastContainer></ToastContainer>

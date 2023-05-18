@@ -37,7 +37,7 @@ const Header = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact font-bold dropdown-content mt-8 p-2 text-white shadow bg-[#2F0743] rounded-md w-52"
+              className="menu menu-compact font-bold dropdown-content mt-5 p-2 text-white shadow bg-[#2F0743] rounded-md w-52"
             >
               <li className="hover:bg-orange-200 rounded-md mb-1 text-white hover:text-black">
                 <ActiveLink to="/">Home</ActiveLink>
