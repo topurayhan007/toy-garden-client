@@ -20,7 +20,7 @@ const Register = () => {
             </div>
           </div>
 
-          <div className="flex items-center">
+          <div className="flex items-center px-2">
             <hr className="flex-1 border-gray-300 border-[1px]" />
             <div className="mx-4 label-text text-base font-medium">Or</div>
             <hr className="flex-1 border-gray-300 border-[1px]" />
