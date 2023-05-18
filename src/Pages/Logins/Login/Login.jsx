@@ -1,11 +1,70 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const Login = () => {
+  const { signIn, signInWithGoogle } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
+  const handleSignIn = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    console.log(email, password);
+
+    // SignIn code using Firebase func
+    signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        toast("Logged in successfully!", {
+          position: "top-center",
+          type: "success",
+        });
+
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error.message);
+        // Show error message if User or Password is invalid accordingly
+        if (
+          error.message === "Firebase: Error (auth/user-not-found)." ||
+          error.message === "Firebase: Error (auth/wrong-password)."
+        ) {
+          toast("Email or Password is invalid!", {
+            position: "top-center",
+            type: "error",
+          });
+        }
+      });
+  };
+
+  // Handle Google PopUp Login
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+        toast("Logged in successfully!", {
+          position: "top-center",
+          type: "success",
+        });
+
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <div className="mt-10 pb-10  px-3 md:px-0">
       <div className="card flex-shrink-0 w-full border border-purple-100 max-w-md mx-auto mt-16 drop-shadow-sm shadow-md bg-[#fffeff]">
@@ -15,7 +74,7 @@ const Login = () => {
           <div className="form-control mb-4 ">
             <div className="">
               <button
-                onClick={""}
+                onClick={handleGoogleSignIn}
                 className="btn btn-ghost w-full bg-transparent rounded-full border-[#722495] border-2 text-black font-bold px-8 normal-case text-base"
               >
                 <FcGoogle className="me-3 text-2xl" /> Login with Google
