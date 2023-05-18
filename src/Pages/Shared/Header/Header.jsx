@@ -1,5 +1,153 @@
+import { Link } from "react-router-dom";
+import ActiveLink from "../ActiveLink/ActiveLink";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
+import { toast } from "react-toastify";
+import { AiOutlineMenuUnfold } from "react-icons/ai";
+import { VscTriangleDown } from "react-icons/vsc";
+import { BsPersonCircle } from "react-icons/bs";
+
 const Header = () => {
-  return <div>This is Header</div>;
+  const { user, logOut } = useContext(AuthContext);
+  const [showAccountInfo, setAccountInfo] = useState(false);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        setAccountInfo(false);
+        toast("Logged out successfully!", {
+          position: "top-center",
+          type: "success",
+        });
+      })
+      .catch((error) => console.log(error));
+  };
+
+  return (
+    <div className="bg-gradient-to-r from-[#090748] via-[#2F0743] to-[#090748]">
+      <div className="navbar bg-transparent text-white mx-auto max-w-screen-xl lg:px-0 py-5">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <label
+              tabIndex={0}
+              className="btn btn-ghost md:hidden text-2xl ps-2 pe-2"
+            >
+              <AiOutlineMenuUnfold />
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-compact font-bold dropdown-content mt-6 p-2 shadow bg-purple-50 rounded-md w-52"
+            >
+              <li>
+                <ActiveLink to="/">Home</ActiveLink>
+              </li>
+              <li>
+                <ActiveLink to="/toys">All Toys</ActiveLink>
+              </li>
+
+              {user && (
+                <>
+                  <li>
+                    <ActiveLink to="/my-toys">My Toys</ActiveLink>
+                  </li>
+                  <li>
+                    <ActiveLink to="/add-toy">Add A Toy</ActiveLink>
+                  </li>
+                </>
+              )}
+
+              <li>
+                <ActiveLink to="/blog">Blogs</ActiveLink>
+              </li>
+            </ul>
+          </div>
+          <Link to="/">
+            <h4 className="w-max cursor-pointer font-extrabold text-2xl lg:text-3xl flex items-center font-frosty tracking-wider">
+              <span>
+                <img
+                  src="/assets/logos/logo.png"
+                  className="w-10 font-bold"
+                  alt=""
+                />
+              </span>{" "}
+              Toy Garden
+            </h4>
+          </Link>
+        </div>
+        <div className="navbar-center hidden md:flex">
+          <ul className="menu font-bold text-xl menu-horizontal px-1">
+            <li>
+              <ActiveLink to="/">Home</ActiveLink>
+            </li>
+            <li>
+              <ActiveLink to="/toys">All Toys</ActiveLink>
+            </li>
+            {user && (
+              <>
+                <li>
+                  <ActiveLink to="/my-toys">My Toys</ActiveLink>
+                </li>
+                <li>
+                  <ActiveLink to="/add-toy">Add A Toy</ActiveLink>
+                </li>
+              </>
+            )}
+            <li>
+              <ActiveLink to="/blog">Blogs</ActiveLink>
+            </li>
+          </ul>
+        </div>
+        <div className="navbar-end">
+          {user === null ? (
+            <Link to="/login">
+              <button className="btn bg-transparent border-[2.5px] border-white rounded-full px-8 hover:bg-[#ea6802] hover:text-black hover:border-[#ea6802] text-white font-bold normal-case text-xl">
+                Login
+              </button>
+            </Link>
+          ) : (
+            <div className="dropdown dropdown-end">
+              <label
+                tabIndex={0}
+                onMouseEnter={() => setAccountInfo(true)}
+                onClick={() => setAccountInfo(!showAccountInfo)}
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-12 rounded-full">
+                  {user?.photoURL !== null ? (
+                    <>
+                      <img src={user.photoURL} />
+                      <VscTriangleDown className="" />
+                    </>
+                  ) : (
+                    <>
+                      <BsPersonCircle className="text-white" />
+                      <VscTriangleDown className="" />
+                    </>
+                  )}
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                onMouseLeave={() => setAccountInfo(false)}
+                className={`mt-6 p-2 shadow menu menu-compact font-semibold ${
+                  showAccountInfo ? "absolute z-50 right-0" : "hidden"
+                }  text-black bg-purple-50 rounded-md w-52`}
+              >
+                {user?.displayName && (
+                  <li onClick={() => setAccountInfo(false)}>
+                    <a className="justify-between">{user.displayName}</a>
+                  </li>
+                )}
+                <li onClick={handleLogOut} className="text-[#ea6802]">
+                  <a>Logout</a>
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Header;

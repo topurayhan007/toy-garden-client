@@ -1,5 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=EB+Garamond:wght@400;700;800&family=Exo+2:wght@400;500;600;700;800;900&family=Fira+Code:wght@400;500;600;700&family=Inter&family=Lato:wght@400;700&family=Lobster&family=Manrope:wght@200;300;400;500;600;700;800&family=Open+Sans&family=Poppins:wght@400;500&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&family=Rancho&family=Roboto:wght@400;500;700&family=Work+Sans:wght@400;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bubblegum+Sans&family=EB+Garamond:wght@400;700;800&family=Exo+2:wght@400;500;600;700;800;900&family=Fira+Code:wght@400;500;600;700&family=Inter&family=Lato:wght@400;700&family=Lobster&family=Manrope:wght@200;300;400;500;600;700;800&family=Open+Sans&family=Poppins:wght@400;500&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700&family=Rancho&family=Roboto:wght@400;500;700&family=Work+Sans:wght@400;700;800&display=swap");
+
+@import url("https://fonts.cdnfonts.com/css/reey");
+@import url("https://fonts.cdnfonts.com/css/frosty");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  font-family: "Bubblegum Sans", cursive;
+}
