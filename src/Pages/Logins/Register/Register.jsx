@@ -1,8 +1,75 @@
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
+import { useContext } from "react";
+import AuthProvider, { AuthContext } from "../../../providers/AuthProvider";
 
 const Register = () => {
+  const { createUser, updateUserInfo, logOut } = useContext(AuthContext);
+
+  const handleSignUp = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photoLink = form.photo.value;
+
+    console.log(name, email, password, photoLink);
+
+    // check password length >= 6 chars
+    if (password.length < 6) {
+      toast("Password must be at least 6 characters!", {
+        position: "top-center",
+        type: "error",
+      });
+      return;
+    }
+
+    // SignUp func of Firebase
+    createUser(email, password)
+      .then((result) => {
+        const createdUser = result.user;
+        console.log(createdUser);
+
+        // Updates the User info after User is created
+        updateUserInfo(name, photoLink)
+          .then(() => {
+            console.log("User info updated!");
+            form.reset();
+          })
+          .catch((error2) => {
+            console.log(error2.message);
+            toast(error2.message, {
+              position: "top-center",
+              type: "error",
+            });
+          });
+
+        // Calling LogOut otherwise logs in User upon account creation
+        logOut()
+          .then((result) => {
+            console.log(result);
+            toast("User created successfully!", {
+              position: "top-center",
+              type: "success",
+            });
+          })
+          .catch((error) => {
+            console.log(error.message);
+          });
+
+        // Catch any user creation error
+      })
+      .catch((error) => {
+        console.log(error.message);
+        toast(error.message, {
+          position: "top-center",
+          type: "error",
+        });
+      });
+  };
+
   return (
     <div className="mt-10 pb-10  px-3 md:px-0">
       <div className="card flex-shrink-0 w-full border border-purple-100 max-w-md mx-auto mt-16 drop-shadow-sm shadow-md bg-[#fffeff]">
@@ -27,7 +94,7 @@ const Register = () => {
           </div>
         </div>
 
-        <form onSubmit={""}>
+        <form onSubmit={handleSignUp}>
           <div className="card-body pb-9 pt-5">
             <div className="form-control">
               <label className="label">
