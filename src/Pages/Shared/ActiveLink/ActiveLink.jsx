@@ -8,7 +8,7 @@ const ActiveLink = ({ to, children }) => {
       className={({ isActive }) =>
         isActive
           ? "bg-gradient-to-r from-[#ea6802] to-[#fbbf04] text-transparent bg-clip-text font-extrabold"
-          : "text-black md:text-white"
+          : "text-white"
       }
     >
       {children}

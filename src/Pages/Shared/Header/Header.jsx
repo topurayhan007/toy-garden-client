@@ -4,8 +4,9 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { toast } from "react-toastify";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
-import { VscTriangleDown } from "react-icons/vsc";
+import { VscTriangleDown, VscTriangleUp } from "react-icons/vsc";
 import { BsPersonCircle } from "react-icons/bs";
+import { IoMdLogOut } from "react-icons/io";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -25,7 +26,7 @@ const Header = () => {
 
   return (
     <div className="bg-gradient-to-r from-[#090748] via-[#2F0743] to-[#090748]">
-      <div className="navbar bg-transparent text-white mx-auto max-w-screen-xl lg:px-0 py-5">
+      <div className="navbar bg-transparent text-white mx-auto max-w-screen-xl lg:px-0 py-4">
         <div className="navbar-start">
           <div className="dropdown">
             <label
@@ -36,27 +37,27 @@ const Header = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact font-bold dropdown-content mt-6 p-2 shadow bg-purple-50 rounded-md w-52"
+              className="menu menu-compact font-bold dropdown-content mt-8 p-2 text-white shadow bg-[#2F0743] rounded-md w-52"
             >
-              <li>
+              <li className="hover:bg-orange-200 rounded-md mb-1 text-white hover:text-black">
                 <ActiveLink to="/">Home</ActiveLink>
               </li>
-              <li>
+              <li className="hover:bg-orange-200 rounded-md mb-1 text-white hover:text-black">
                 <ActiveLink to="/toys">All Toys</ActiveLink>
               </li>
 
               {user && (
                 <>
-                  <li>
+                  <li className="hover:bg-orange-200 rounded-md mb-1 text-white hover:text-black">
                     <ActiveLink to="/my-toys">My Toys</ActiveLink>
                   </li>
-                  <li>
+                  <li className="hover:bg-orange-200 rounded-md mb-1 text-white hover:text-black">
                     <ActiveLink to="/add-toy">Add A Toy</ActiveLink>
                   </li>
                 </>
               )}
 
-              <li>
+              <li className="hover:bg-orange-200 rounded-md mb-1 text-white hover:text-black">
                 <ActiveLink to="/blog">Blogs</ActiveLink>
               </li>
             </ul>
@@ -110,36 +111,46 @@ const Header = () => {
                 tabIndex={0}
                 onMouseEnter={() => setAccountInfo(true)}
                 onClick={() => setAccountInfo(!showAccountInfo)}
-                className="btn btn-ghost btn-circle avatar"
+                className="btn bg-transparent hover:bg-transparent hover:border-white btn-circle avatar border-2 border-white flex justify-between items-center w-max gap-1 h-16 p-1"
               >
                 <div className="w-12 rounded-full">
                   {user?.photoURL !== null ? (
                     <>
                       <img src={user.photoURL} />
-                      <VscTriangleDown className="" />
                     </>
                   ) : (
                     <>
                       <BsPersonCircle className="text-white" />
-                      <VscTriangleDown className="" />
                     </>
                   )}
                 </div>
+                {showAccountInfo === false ? (
+                  <VscTriangleDown className="text-xl pe-1" />
+                ) : (
+                  <VscTriangleUp className="text-xl pe-1" />
+                )}
               </label>
               <ul
                 tabIndex={0}
                 onMouseLeave={() => setAccountInfo(false)}
                 className={`mt-6 p-2 shadow menu menu-compact font-semibold ${
                   showAccountInfo ? "absolute z-50 right-0" : "hidden"
-                }  text-black bg-purple-50 rounded-md w-52`}
+                }  text-white bg-[#2F0743]  rounded-md w-52`}
               >
                 {user?.displayName && (
                   <li onClick={() => setAccountInfo(false)}>
-                    <a className="justify-between">{user.displayName}</a>
+                    <a className="justify-between hover:bg-orange-200 hover:text-black rounded-md mb-1">
+                      {user.displayName}
+                    </a>
                   </li>
                 )}
-                <li onClick={handleLogOut} className="text-[#ea6802]">
-                  <a>Logout</a>
+                <li
+                  onClick={handleLogOut}
+                  className="text-red-600 hover:bg-orange-200 rounded-md"
+                >
+                  <a>
+                    Logout <IoMdLogOut className="font-extrabold text-lg" />
+                  </a>
                 </li>
               </ul>
             </div>
