@@ -1,7 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Login = () => {
   return (
@@ -28,7 +30,7 @@ const Login = () => {
           </div>
         </div>
 
-        <form onSubmit={""}>
+        <form onSubmit={handleSignIn}>
           <div className="card-body pb-9 pt-5">
             <div className="form-control">
               <label className="label">

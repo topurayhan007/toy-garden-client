@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 import { useContext } from "react";
-import AuthProvider, { AuthContext } from "../../../providers/AuthProvider";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Register = () => {
   const { createUser, updateUserInfo, logOut } = useContext(AuthContext);
