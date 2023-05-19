@@ -172,6 +172,8 @@ const ToyCategorySection = () => {
           )}
         </Tabs>
       </div>
+
+      {/* Modal */}
       <div>
         {modalState && (
           <>

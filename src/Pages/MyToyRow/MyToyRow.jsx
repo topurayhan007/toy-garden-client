@@ -4,7 +4,7 @@ import { AiFillDelete } from "react-icons/ai";
 import Rating from "react-rating";
 import { BsStarFill, BsStar } from "react-icons/bs";
 
-const MyToyRow = ({ toy }) => {
+const MyToyRow = ({ toy, handleOpenModal, handleDeleteToy }) => {
   const {
     _id,
     name,
@@ -15,13 +15,14 @@ const MyToyRow = ({ toy }) => {
     quantity,
     description,
   } = toy;
+
   return (
     <tr className=" ">
-      <td>
+      <td className="border-b-2 border-b-purple-50">
         <div className="flex items-center gap-3 text-lg mx-0">
           <div className="avatar">
             <div className="mask mask-circle w-24 h-24">
-              <img src={pictureURL} alt="" />
+              <img src={pictureURL} alt="" className="" />
             </div>
           </div>
           <div>
@@ -42,27 +43,29 @@ const MyToyRow = ({ toy }) => {
           </div>
         </div>
       </td>
-      <td>
+      <td className="border-b-2 border-b-purple-50">
         <p className="font-medium text-lg text-center">${price}</p>
       </td>
-      <td>
+      <td className="border-b-2 border-b-purple-50">
         <p className="font-medium text-lg text-center">{quantity}</p>
       </td>
 
-      <td className="min-w-[12rem] max-w-[23rem] whitespace-normal mr-0">
+      <td className="min-w-[12rem] max-w-[23rem] whitespace-normal border-b-2 border-b-purple-50">
         <div className="flex justify-left">
           <p className="">{description}</p>
         </div>
       </td>
-      <td>
+      <td className="border-b-2 border-b-purple-50">
         <div className="flex items-center space-x-3 text-lg justify-center">
           <button
-            onClick={_id}
+            onClick={() => {
+              handleOpenModal(_id);
+            }}
             className="btn normal-case text-lg rounded-full font-medium bg-green-200 hover:bg-green-300 hover:border-emerald-400 border-2 border-emerald-400 text-emerald-700"
           >
             Update <RxUpdate className="ms-2 text-emerald-700" />
           </button>
-          <button className="btn normal-case text-lg rounded-full font-medium bg-red-200 hover:bg-red-300 hover:border-rose-400 border-2 border-rose-400 text-rose-700">
+          <button onClick={()=> {handleDeleteToy(_id)}} className="btn normal-case text-lg rounded-full font-medium bg-red-200 hover:bg-red-300 hover:border-rose-400 border-2 border-rose-400 text-rose-700">
             Delete <AiFillDelete className="ms-2 text-rose-700" />
           </button>
         </div>
