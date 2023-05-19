@@ -1,10 +1,70 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useContext } from "react";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
+import { toast } from "react-toastify";
 
 const AddAToy = () => {
   const { user } = useContext(AuthContext);
-  console.log(user.email);
+  // console.log(user.email);
+
+  const handleAddToy = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const subCategory = form.subCategory.value;
+    const sellerName = form.sellerName.value;
+    const sellerEmail = form.sellerEmail.value;
+    const price = parseFloat(form.price.value);
+    const rating = parseFloat(form.rating.value);
+    const quantity = parseInt(form.quantity.value);
+    const pictureURL = form.pictureURL.value;
+    const description = form.description.value;
+
+    if (rating > 5 || rating < 0) {
+      toast("Rating must be between 0 and 5!", {
+        position: "top-center",
+        type: "error",
+      });
+      return;
+    }
+
+    const newToy = {
+      name,
+      subCategory,
+      sellerName,
+      sellerEmail,
+      price,
+      rating,
+      quantity,
+      pictureURL,
+      description,
+    };
+    console.log(newToy);
+
+    // Send toy info to server to add to DB
+    fetch("https://toy-garden-server.vercel.app/toy", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newToy),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged > 0) {
+          Swal.fire({
+            title: "Success!",
+            text: "Toy added successfully!",
+            icon: "success",
+            confirmButtonText: "Okay",
+          });
+          form.reset();
+        }
+      });
+  };
+
   return (
     <div>
       <div className="mt-10 pb-10  px-3 md:px-0">
@@ -13,7 +73,7 @@ const AddAToy = () => {
             Add Your Toy
           </p>
 
-          <form onSubmit={""}>
+          <form onSubmit={handleAddToy}>
             <div className="card-body pb-9 pt-5 ">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="form-control">
@@ -82,7 +142,9 @@ const AddAToy = () => {
                   </label>
                   <input
                     type="number"
+                    step="0.01"
                     name="price"
+                    pattern="^\d+(?:\.\d{1,2})?$"
                     required
                     placeholder="Your toy price"
                     className="input input-bordered border-[1.8px] rounded-full border-[#722495] text-lg"
@@ -97,6 +159,10 @@ const AddAToy = () => {
                   <input
                     type="number"
                     name="rating"
+                    step="0.1"
+                    pattern="^\d+(?:\.\d{1,2})?$"
+                    min="0"
+                    max="5"
                     required
                     placeholder="Your toy rating"
                     className="input input-bordered border-[1.8px] rounded-full border-[#722495] text-lg"
