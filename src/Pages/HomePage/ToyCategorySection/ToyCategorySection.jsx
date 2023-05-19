@@ -8,8 +8,8 @@ const ToyCategorySection = () => {
   const subCategories = {
     0: "Marvel",
     1: "DC",
-    3: "Star Wars",
-    4: "Transformers",
+    2: "Star Wars",
+    3: "Transformers",
   };
 
   const [loading, setLoading] = useState(true);
@@ -32,6 +32,8 @@ const ToyCategorySection = () => {
   const subCategoryData = toys.filter(
     (toy) => toy.subCategory === selectedCategory
   );
+
+  console.log(subCategoryData);
 
   return (
     <div className="">
@@ -60,7 +62,7 @@ const ToyCategorySection = () => {
           </div>
         </div>
       </div>
-      <div className="max-w-screen-xl mx-auto px-3 justify-center items-center">
+      <div className="max-w-screen-xl mx-auto px-3 justify-center items-center mt-3">
         <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <TabList>
             <Tab>Marvel</Tab>
@@ -69,29 +71,41 @@ const ToyCategorySection = () => {
             <Tab>Transformers</Tab>
           </TabList>
           {loading === true ? (
-            <div className="my-14 flex justify-center">
+            <div className="my-14 flex justify-center mt-20">
               <div
                 className="radial-progress animate-spin text-[#ea6802]"
                 style={{ "--value": 85 }}
               ></div>
             </div>
           ) : (
-            <div className="flex justify-center">
+            <div className="">
               <TabPanel>
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
                   {subCategoryData.map((toy) => (
                     <ToyCategoryCard key={toy._id} toy={toy}></ToyCategoryCard>
                   ))}
                 </div>
               </TabPanel>
               <TabPanel>
-                <h2>{subCategoryData.length}</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                  {subCategoryData.map((toy) => (
+                    <ToyCategoryCard key={toy._id} toy={toy}></ToyCategoryCard>
+                  ))}
+                </div>
               </TabPanel>
               <TabPanel>
-                <h2>{subCategoryData.length}</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                  {subCategoryData.map((toy) => (
+                    <ToyCategoryCard key={toy._id} toy={toy}></ToyCategoryCard>
+                  ))}
+                </div>
               </TabPanel>
               <TabPanel>
-                <h2>{subCategoryData.length}</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                  {subCategoryData.map((toy) => (
+                    <ToyCategoryCard key={toy._id} toy={toy}></ToyCategoryCard>
+                  ))}
+                </div>
               </TabPanel>
             </div>
           )}
