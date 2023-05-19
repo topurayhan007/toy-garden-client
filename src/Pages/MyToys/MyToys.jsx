@@ -11,6 +11,7 @@ const MyToys = () => {
   const [selectedToy, setSelectedToy] = useState({});
   const [loading, setLoading] = useState(true);
   const [modalState, setModalState] = useState(false);
+  const [updateSignal, setUpdateSignal] = useState(0);
 
   const url = `https://toy-garden-server.vercel.app/my-toys/${user?.email}`;
 
@@ -21,7 +22,7 @@ const MyToys = () => {
         setUserToys(data);
         setLoading(false);
       });
-  }, [url]);
+  }, [url, updateSignal]);
 
   const handleOpenModal = (iD) => {
     console.log(iD);
@@ -33,10 +34,50 @@ const MyToys = () => {
   };
   const handleCloseModal = () => {
     setModalState(false);
+    setUpdateSignal((signal) => signal + 1);
   };
 
   const handleUpdateToy = (event) => {
     event.preventDefault();
+    const form = event.target;
+    const price = parseFloat(form.price.value);
+    const quantity = parseInt(form.quantity.value);
+    const description = form.description.value;
+
+    const updatedToy = {
+      price,
+      quantity,
+      description,
+    };
+
+    // Updated data sent to server
+    fetch(`https://toy-garden-server.vercel.app/toys/${selectedToy._id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedToy),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Success!",
+            text: "Toy info updated successfully!",
+            icon: "success",
+            confirmButtonText: "Okay",
+          });
+          form.reset();
+          setUpdateSignal((signal) => signal + 1);
+        } else {
+          Swal.fire(
+            "Error!",
+            "Toy info couldn't be updated. Please try again!",
+            "error"
+          );
+        }
+      });
   };
 
   const handleDeleteToy = (iD) => {
