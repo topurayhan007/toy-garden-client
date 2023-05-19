@@ -1,11 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "./ToyCategorySection.css";
+import ToyCategoryCard from "../ToyCategoryCard/ToyCategoryCard";
 
 const ToyCategorySection = () => {
+  const subCategories = {
+    0: "Marvel",
+    1: "DC",
+    3: "Star Wars",
+    4: "Transformers",
+  };
+
+  const [loading, setLoading] = useState(true);
   const [tabIndex, setTabIndex] = useState(0);
-  console.log("TabIndex", tabIndex);
+  const [toys, setToys] = useState([]);
+  // console.log("TabIndex", tabIndex);
+
+  const selectedCategory = subCategories[tabIndex];
+  console.log(selectedCategory);
+
+  useEffect(() => {
+    fetch("https://toy-garden-server.vercel.app/toys")
+      .then((res) => res.json())
+      .then((data) => {
+        setToys(data);
+        setLoading(false);
+      });
+  }, []);
+
+  const subCategoryData = toys.filter(
+    (toy) => toy.subCategory === selectedCategory
+  );
 
   return (
     <div className="">
@@ -34,7 +60,7 @@ const ToyCategorySection = () => {
           </div>
         </div>
       </div>
-      <div className="max-w-screen-xl mx-auto">
+      <div className="max-w-screen-xl mx-auto px-3 justify-center items-center">
         <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <TabList>
             <Tab>Marvel</Tab>
@@ -42,19 +68,33 @@ const ToyCategorySection = () => {
             <Tab>Star Wars</Tab>
             <Tab>Transformers</Tab>
           </TabList>
-
-          <TabPanel>
-            <h2>Any content 1</h2>
-          </TabPanel>
-          <TabPanel>
-            <h2>Any content 2</h2>
-          </TabPanel>
-          <TabPanel>
-            <h2>Any content 3</h2>
-          </TabPanel>
-          <TabPanel>
-            <h2>Any content 4</h2>
-          </TabPanel>
+          {loading === true ? (
+            <div className="my-14 flex justify-center">
+              <div
+                className="radial-progress animate-spin text-[#ea6802]"
+                style={{ "--value": 85 }}
+              ></div>
+            </div>
+          ) : (
+            <div className="flex justify-center">
+              <TabPanel>
+                <div className="grid grid-cols-3 gap-3">
+                  {subCategoryData.map((toy) => (
+                    <ToyCategoryCard key={toy._id} toy={toy}></ToyCategoryCard>
+                  ))}
+                </div>
+              </TabPanel>
+              <TabPanel>
+                <h2>{subCategoryData.length}</h2>
+              </TabPanel>
+              <TabPanel>
+                <h2>{subCategoryData.length}</h2>
+              </TabPanel>
+              <TabPanel>
+                <h2>{subCategoryData.length}</h2>
+              </TabPanel>
+            </div>
+          )}
         </Tabs>
       </div>
     </div>
