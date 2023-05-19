@@ -10,7 +10,7 @@ const ToyCategoryCard = ({ toy, handleOpenModal }) => {
   return (
     <div>
       <div className="card card-compact md:w-96 w-full bg-base-100 shadow-md border border-slate-200 hover:scale-105 transition-transform duration-300 ease-out transform">
-        <LazyLoad height={450} offset={100} threshold={0.95} className="">
+        <LazyLoad height={450} offset={200} threshold={0.95} className="">
           <figure className="h-[450px] rounded-tr-2xl rounded-tl-2xl">
             <img
               src={pictureURL}
@@ -20,7 +20,7 @@ const ToyCategoryCard = ({ toy, handleOpenModal }) => {
           </figure>
         </LazyLoad>
 
-        <div className="card-body bg-[#f2e3ff] p-0">
+        <div className="card-body bg-[#f9f4fd] p-0">
           <p className="bg-transparent hover:bg-transparent text-orange-500 normal-case text-xl font-bold flex justify-center items-center">
             <Rating
               readonly="true"
