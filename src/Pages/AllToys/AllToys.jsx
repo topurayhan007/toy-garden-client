@@ -3,6 +3,7 @@ import AllToyRow from "../AllToyRow/AllToyRow";
 
 const AllToys = () => {
   const [allToys, setAllToys] = useState([]);
+  const [slicedToys, setSlicedToys] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,12 +15,15 @@ const AllToys = () => {
       });
   }, []);
 
+  useEffect(() => {
+    const slicedDatas = allToys.slice(0, 20);
+    setSlicedToys(slicedDatas);
+  }, [allToys]);
+
   return (
-    <div className="">
-      <div className="my-24 mx-auto max-w-7xl text-center">
-        <h2 className="font-bold text-5xl text-[#2F0743] mb-8">
-          My Added Toys
-        </h2>
+    <div className="mb-24">
+      <div className="mt-24 mx-auto max-w-7xl text-center">
+        <h2 className="font-bold text-5xl text-[#2F0743] mb-8">All Toys</h2>
         {loading === true ? (
           <div className="my-14 flex justify-center">
             <div
@@ -34,16 +38,19 @@ const AllToys = () => {
               <thead>
                 <tr>
                   <th className="bg-[#f8efff] border-b-2 border-purple-100 normal-case text-xl z-0 text-center">
-                    Name & Info
+                    Seller Name
                   </th>
                   <th className="bg-[#f8efff] border-b-2 border-purple-100 normal-case text-xl text-center">
-                    Price
+                    Toy Name
                   </th>
                   <th className="bg-[#f8efff] border-b-2 border-purple-100 normal-case text-xl text-center">
-                    Quantity
+                    Sub Category
                   </th>
                   <th className="bg-[#f8efff] border-b-2 border-purple-100 normal-case text-xl text-center ">
-                    Description
+                    Price
+                  </th>
+                  <th className="bg-[#f8efff] border-b-2 border-purple-100 normal-case text-xl text-center ">
+                    Available Quantiy
                   </th>
                   <th className="bg-[#f8efff] border-b-2 border-purple-100 normal-case text-xl text-center">
                     Actions
@@ -53,13 +60,32 @@ const AllToys = () => {
 
               <tbody className="">
                 {/* Row */}
-                {allToys.map((toy) => (
+                {slicedToys.map((toy) => (
                   <AllToyRow key={toy._id} toy={toy}></AllToyRow>
                 ))}
               </tbody>
             </table>
           </div>
         )}
+      </div>
+
+      {/* Pagination Maybe in Future */}
+      <div className="mt-24 mx-auto max-w-7xl text-center">
+        <div className="text-right flex justify-end">
+          <p className="text-xl p-4 rounded-xl bg-purple-50 w-max text-[#9491f5]">
+            Showing{" "}
+            <span className="font-extrabold text-xl px-2 text-purple-500">
+              {slicedToys.length}
+            </span>{" "}
+            of{" "}
+            <span className="font-extrabold text-xl px-2 text-purple-500">
+              {" "}
+              {allToys.length}
+            </span>
+          </p>
+        </div>
+        {/* Pagination design goes here */}
+        <div></div>
       </div>
     </div>
   );
