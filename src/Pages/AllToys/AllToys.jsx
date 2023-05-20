@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import AllToyRow from "../AllToyRow/AllToyRow";
+import { FiSearch } from "react-icons/fi";
 
 const AllToys = () => {
   const [allToys, setAllToys] = useState([]);
   const [slicedToys, setSlicedToys] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     fetch(`https://toy-garden-server.vercel.app/toys`)
@@ -20,10 +22,43 @@ const AllToys = () => {
     setSlicedToys(slicedDatas);
   }, [allToys]);
 
+  console.log(searchQuery);
+
+  const handleSearchQuery = (event) => {
+    event.preventDefault();
+    console.log(searchQuery);
+    fetch(
+      `https://toy-garden-server.vercel.app/toys/search?query=${searchQuery}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setSlicedToys(data);
+      });
+  };
+
   return (
     <div className="mb-24">
       <div className="mt-24 mx-auto max-w-7xl text-center">
         <h2 className="font-bold text-5xl text-[#2F0743] mb-8">All Toys</h2>
+        <div className="flex justify-end">
+          <form onSubmit={handleSearchQuery}>
+            <div className="card-body pb-9 pt-5 flex-row gap-0">
+              <div className="form-control">
+                <input
+                  type="text"
+                  name="search"
+                  required
+                  onChange={(event) => setSearchQuery(event.target.value)}
+                  placeholder="Search name..."
+                  className="input input-bordered border-[3px] h-14 text-xl rounded-l-full border-purple-900"
+                />
+              </div>
+              <button className="form-control border-2 text-3xl text-white justify-center items-center px-5 rounded-r-full border-purple-900 bg-purple-900">
+                <FiSearch className="" />
+              </button>
+            </div>
+          </form>
+        </div>
         {loading === true ? (
           <div className="my-14 flex justify-center">
             <div
