@@ -11,28 +11,17 @@ const MyToys = () => {
   const [selectedToy, setSelectedToy] = useState({});
   const [loading, setLoading] = useState(true);
   const [modalState, setModalState] = useState(false);
-  const [updateSignal, setUpdateSignal] = useState(0);
-  const [updateStatus, setUpdateStatus] = useState(0);
-
-  const url = `https://toy-garden-server.vercel.app/my-toys/${user?.email}`;
 
   useEffect(() => {
+    const url = `https://toy-garden-server.vercel.app/my-toys/${user?.email}`;
+
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setUserToys(data);
         setLoading(false);
-        if (updateStatus > 0) {
-          const remaining = userToys.filter(
-            (toy) => toy._id !== selectedToy._id
-          );
-          const updated = userToys.find((toy) => toy._id === selectedToy._id);
-          const newUserToys = [updated, ...remaining];
-          setUserToys(newUserToys);
-          setUpdateStatus(0);
-        }
       });
-  }, [url, updateSignal, selectedToy._id, updateStatus, userToys]);
+  }, [user?.email]);
 
   const handleOpenModal = (iD) => {
     console.log(iD);
@@ -44,8 +33,6 @@ const MyToys = () => {
   };
   const handleCloseModal = () => {
     setModalState(false);
-    // setUpdateSignal((signal) => signal + 1);
-    console.log(url, updateSignal, selectedToy._id, updateStatus, userToys);
   };
 
   const handleUpdateToy = (event) => {
@@ -79,15 +66,18 @@ const MyToys = () => {
             icon: "success",
             confirmButtonText: "Okay",
           });
-          setUpdateStatus(1);
-          setUpdateSignal((signal) => signal + 1);
-          console.log(
-            url,
-            updateSignal,
-            selectedToy._id,
-            updateStatus,
-            userToys
-          );
+
+          fetch(`https://toy-garden-server.vercel.app/my-toys/${user?.email}`)
+            .then((res) => res.json())
+            .then((data) => {
+              const remaining = userToys.filter(
+                (toy) => toy._id !== selectedToy._id
+              );
+              const updated = data.find((toy) => toy._id === selectedToy._id);
+              const newUserToys = [updated, ...remaining];
+              console.log(newUserToys);
+              setUserToys(newUserToys);
+            });
 
           // form.reset();
         } else {
@@ -121,6 +111,7 @@ const MyToys = () => {
             console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "The toy has been deleted.", "success");
+
               const remaining = userToys.filter((toy) => toy._id !== _id);
               setUserToys(remaining);
             } else {

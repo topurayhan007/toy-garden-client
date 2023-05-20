@@ -47,7 +47,6 @@ const AllToys = () => {
                 <input
                   type="text"
                   name="search"
-                  required
                   onChange={(event) => setSearchQuery(event.target.value)}
                   placeholder="Search name..."
                   className="input input-bordered border-[3px] h-14 text-xl rounded-l-full border-purple-900"
