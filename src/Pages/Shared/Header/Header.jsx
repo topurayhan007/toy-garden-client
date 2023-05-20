@@ -31,7 +31,7 @@ const Header = () => {
           <div className="dropdown">
             <label
               tabIndex={0}
-              className="btn btn-ghost md:hidden text-2xl ps-2 pe-2"
+              className="btn btn-ghost md:hidden text-3xl ps-2 pe-2"
             >
               <AiOutlineMenuUnfold />
             </label>
