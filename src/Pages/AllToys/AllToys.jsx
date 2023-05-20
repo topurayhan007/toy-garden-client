@@ -4,23 +4,29 @@ import { FiSearch } from "react-icons/fi";
 
 const AllToys = () => {
   const [allToys, setAllToys] = useState([]);
+  const [limitedToys, setLimitedToys] = useState([]);
   const [slicedToys, setSlicedToys] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    fetch(`https://toy-garden-server.vercel.app/toys`)
+    fetch(`https://toy-garden-server.vercel.app/toys/limit?query=20`)
       .then((res) => res.json())
       .then((data) => {
-        setAllToys(data);
+        setLimitedToys(data);
         setLoading(false);
       });
   }, []);
 
   useEffect(() => {
-    const slicedDatas = allToys.slice(0, 20);
-    setSlicedToys(slicedDatas);
-  }, [allToys]);
+    setSlicedToys(limitedToys);
+  }, [limitedToys]);
+
+  fetch(`https://toy-garden-server.vercel.app/toys`)
+    .then((res) => res.json())
+    .then((data) => {
+      setAllToys(data);
+    });
 
   console.log(searchQuery);
 

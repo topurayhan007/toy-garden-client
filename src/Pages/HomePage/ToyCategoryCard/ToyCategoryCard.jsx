@@ -37,7 +37,7 @@ const ToyCategoryCard = ({ toy, handleOpenModal }) => {
               <h2 className="card-title text-4xl">${price}</h2>
             </div>
             <div>
-              <Link to={`/toy/${_id}`}>
+              <Link /* to={`/toy/${_id}`} */>
                 <label
                   htmlFor="my-modal"
                   onClick={() => {
