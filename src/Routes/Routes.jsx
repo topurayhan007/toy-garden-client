@@ -42,6 +42,8 @@ const router = createBrowserRouter([
             <ViewDetails></ViewDetails>
           </PrivateRoute>
         ),
+        loader: ({ params }) =>
+          fetch(`https://toy-garden-server.vercel.app/toy/${params.id}`),
       },
       {
         path: "/add-toy",
