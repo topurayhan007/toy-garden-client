@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Rating from "react-rating";
 import { BsStarFill, BsStar } from "react-icons/bs";
 import { IoMdCloseCircle } from "react-icons/io";
+import Swal from "sweetalert2";
 
 const ToyCategorySection = () => {
   const subCategories = {
@@ -48,7 +49,13 @@ const ToyCategorySection = () => {
   const handleOpenModal = (iD) => {
     if (!user?.email) {
       console.log("entered");
-      navigate("/");
+      Swal.fire({
+        title: "Warning!",
+        text: "You have to log in first to view details!",
+        icon: "warning",
+        confirmButtonText: "Okay",
+      });
+      navigate("/login");
     } else {
       setId(iD);
     }
