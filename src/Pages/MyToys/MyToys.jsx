@@ -12,6 +12,7 @@ const MyToys = () => {
   const [loading, setLoading] = useState(true);
   const [modalState, setModalState] = useState(false);
   const [updateSignal, setUpdateSignal] = useState(0);
+  const [updateStatus, setUpdateStatus] = useState(0);
 
   const url = `https://toy-garden-server.vercel.app/my-toys/${user?.email}`;
 
@@ -21,8 +22,17 @@ const MyToys = () => {
       .then((data) => {
         setUserToys(data);
         setLoading(false);
+        if (updateStatus > 0) {
+          const remaining = userToys.filter(
+            (toy) => toy._id !== selectedToy._id
+          );
+          const updated = userToys.find((toy) => toy._id === selectedToy._id);
+          const newUserToys = [updated, ...remaining];
+          setUserToys(newUserToys);
+          setUpdateStatus(0);
+        }
       });
-  }, [url, updateSignal]);
+  }, [url, updateSignal, selectedToy._id, updateStatus, userToys]);
 
   const handleOpenModal = (iD) => {
     console.log(iD);
@@ -34,7 +44,8 @@ const MyToys = () => {
   };
   const handleCloseModal = () => {
     setModalState(false);
-    setUpdateSignal((signal) => signal + 1);
+    // setUpdateSignal((signal) => signal + 1);
+    console.log(url, updateSignal, selectedToy._id, updateStatus, userToys);
   };
 
   const handleUpdateToy = (event) => {
@@ -68,8 +79,17 @@ const MyToys = () => {
             icon: "success",
             confirmButtonText: "Okay",
           });
-          form.reset();
+          setUpdateStatus(1);
           setUpdateSignal((signal) => signal + 1);
+          console.log(
+            url,
+            updateSignal,
+            selectedToy._id,
+            updateStatus,
+            userToys
+          );
+
+          // form.reset();
         } else {
           Swal.fire(
             "Error!",
@@ -80,9 +100,39 @@ const MyToys = () => {
       });
   };
 
-  const handleDeleteToy = (iD) => {
-    console.log(iD);
-    // call delete API
+  // Delete toy function
+  const handleToyDelete = (_id) => {
+    console.log(_id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://toy-garden-server.vercel.app/toys/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "The toy has been deleted.", "success");
+              const remaining = userToys.filter((toy) => toy._id !== _id);
+              setUserToys(remaining);
+            } else {
+              Swal.fire(
+                "Error!",
+                "The toy couldn't be deleted. Please try again!",
+                "error"
+              );
+            }
+          });
+      }
+    });
   };
 
   return (
@@ -129,7 +179,7 @@ const MyToys = () => {
                     key={toy._id}
                     toy={toy}
                     handleOpenModal={handleOpenModal}
-                    handleDeleteToy={handleDeleteToy}
+                    handleToyDelete={handleToyDelete}
                   ></MyToyRow>
                 ))}
               </tbody>
@@ -206,6 +256,8 @@ const MyToys = () => {
                                 <input
                                   type="number"
                                   name="quantity"
+                                  min="0"
+                                  step="1"
                                   required
                                   defaultValue={selectedToy.quantity}
                                   placeholder="Your toy quantity"

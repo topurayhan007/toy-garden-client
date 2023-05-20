@@ -48,7 +48,7 @@ const ToyCategorySection = () => {
   const handleOpenModal = (iD) => {
     if (!user?.email) {
       console.log("entered");
-      navigate("/login");
+      navigate("/");
     } else {
       setId(iD);
     }

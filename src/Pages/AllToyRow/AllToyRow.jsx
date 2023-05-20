@@ -1,15 +1,17 @@
 /* eslint-disable react/prop-types */
 import { RxUpdate } from "react-icons/rx";
-import { AiFillDelete } from "react-icons/ai";
 import Rating from "react-rating";
 import { BsStarFill, BsStar } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
-const MyToyRow = ({ toy, handleOpenModal, handleToyDelete }) => {
+const AllToyRow = ({ toy }) => {
   const {
     _id,
     name,
     subCategory,
     rating,
+    sellerEmail,
+    sellerName,
     pictureURL,
     price,
     quantity,
@@ -57,26 +59,15 @@ const MyToyRow = ({ toy, handleOpenModal, handleToyDelete }) => {
       </td>
       <td className="border-b-2 border-b-purple-50">
         <div className="flex items-center space-x-3 text-lg justify-center">
-          <button
-            onClick={() => {
-              handleOpenModal(_id);
-            }}
-            className="btn normal-case text-lg rounded-full font-medium bg-green-200 hover:bg-green-300 hover:border-emerald-400 border-2 border-emerald-400 text-emerald-700"
-          >
-            Update <RxUpdate className="ms-2 text-emerald-700" />
-          </button>
-          <button
-            onClick={() => {
-              handleToyDelete(_id);
-            }}
-            className="btn normal-case text-lg rounded-full font-medium bg-red-200 hover:bg-red-300 hover:border-rose-400 border-2 border-rose-400 text-rose-700"
-          >
-            Delete <AiFillDelete className="ms-2 text-rose-700" />
-          </button>
+          <Link to={`/toy/${_id}`}>
+            <button className="btn normal-case text-lg rounded-full font-medium bg-indigo-200 hover:bg-indigo-300 hover:border-blue-400 border-2 border-blue-400 text-blue-700">
+              View Details <RxUpdate className="ms-2 text-blue-700" />
+            </button>
+          </Link>
         </div>
       </td>
     </tr>
   );
 };
 
-export default MyToyRow;
+export default AllToyRow;

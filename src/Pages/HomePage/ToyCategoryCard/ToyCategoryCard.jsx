@@ -3,6 +3,7 @@ import LazyLoad from "react-lazy-load";
 import Rating from "react-rating";
 import { BsStarFill, BsStar } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ToyCategoryCard = ({ toy, handleOpenModal }) => {
   const { _id, name, pictureURL, price, rating } = toy;
@@ -36,16 +37,18 @@ const ToyCategoryCard = ({ toy, handleOpenModal }) => {
               <h2 className="card-title text-4xl">${price}</h2>
             </div>
             <div>
-              <label
-                htmlFor="my-modal"
-                onClick={() => {
-                  handleOpenModal(_id);
-                }}
-                className="btn rounded-full text-lg normal-case bg-[#2F0743] text-white hover:bg-purple-900"
-              >
-                View Details{" "}
-                <FaArrowRight className="text-xl ms-2 text-orange-500" />
-              </label>
+              <Link to={`/toy/${_id}`}>
+                <label
+                  htmlFor="my-modal"
+                  onClick={() => {
+                    handleOpenModal(_id);
+                  }}
+                  className="btn rounded-full text-lg normal-case bg-[#2F0743] text-white hover:bg-purple-900"
+                >
+                  View Details{" "}
+                  <FaArrowRight className="text-xl ms-2 text-orange-500" />
+                </label>
+              </Link>
             </div>
           </div>
         </div>
