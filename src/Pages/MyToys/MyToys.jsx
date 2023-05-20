@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import MyToyRow from "../MyToyRow/MyToyRow";
 import { AuthContext } from "../../providers/AuthProvider";
 import { IoMdCloseCircle } from "react-icons/io";
+import { FaLongArrowAltUp, FaLongArrowAltDown } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { VscTriangleDown, VscTriangleUp } from "react-icons/vsc";
 
@@ -133,9 +134,28 @@ const MyToys = () => {
   };
   const handleAscSort = () => {
     setFilterState(false);
+
+    fetch(
+      `https://toy-garden-server.vercel.app/my-toys/${user?.email}/sort?query=1`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setUserToys(data);
+      });
   };
+
   const handleDesSort = () => {
     setFilterState(false);
+
+    fetch(
+      `https://toy-garden-server.vercel.app/my-toys/${user?.email}/sort?query=-1`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setUserToys(data);
+      });
   };
 
   return (
@@ -170,13 +190,20 @@ const MyToys = () => {
                 onClick={handleAscSort}
                 className="hover:bg-blue-100 hover:text-[#090748] mb-2 rounded-lg text-lg font-semibold"
               >
-                <a>Price: Low to High</a>
+                <a>
+                  <FaLongArrowAltUp className="me-1" />
+                  Price: Low to High
+                </a>
               </li>
               <li
                 onClick={handleDesSort}
                 className="hover:bg-blue-100 hover:text-[#090748] mt-2 rounded-xl text-lg font-semibold"
               >
-                <a>Price: High to Low</a>
+                <a>
+                  {" "}
+                  <FaLongArrowAltDown className="me-1" />
+                  Price: High to Low
+                </a>
               </li>
             </ul>
           </div>
