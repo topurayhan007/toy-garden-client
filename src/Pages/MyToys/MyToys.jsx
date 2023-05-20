@@ -3,6 +3,7 @@ import MyToyRow from "../MyToyRow/MyToyRow";
 import { AuthContext } from "../../providers/AuthProvider";
 import { IoMdCloseCircle } from "react-icons/io";
 import Swal from "sweetalert2";
+import { VscTriangleDown, VscTriangleUp } from "react-icons/vsc";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
@@ -11,6 +12,7 @@ const MyToys = () => {
   const [selectedToy, setSelectedToy] = useState({});
   const [loading, setLoading] = useState(true);
   const [modalState, setModalState] = useState(false);
+  const [filterState, setFilterState] = useState(false);
 
   useEffect(() => {
     const url = `https://toy-garden-server.vercel.app/my-toys/${user?.email}`;
@@ -126,12 +128,59 @@ const MyToys = () => {
     });
   };
 
+  const handleFilterToggle = () => {
+    setFilterState(!filterState);
+  };
+  const handleAscSort = () => {
+    setFilterState(false);
+  };
+  const handleDesSort = () => {
+    setFilterState(false);
+  };
+
   return (
     <div className="">
       <div className="my-24 mx-auto max-w-7xl text-center">
         <h2 className="font-bold text-5xl text-[#2F0743] mb-8">
           My Added Toys
         </h2>
+        <div className="flex justify-end pt-5 pb-9">
+          <div className="dropdown-bottom dropdown-end dropdown mr-3">
+            <button
+              tabIndex={0}
+              onClick={handleFilterToggle}
+              className="bg-[#090748] px-8 py-4 text-xl flex justify-center items-center text-white rounded-xl m-1 font-semibold"
+            >
+              Filter By{" "}
+              {filterState === true ? (
+                <VscTriangleUp className="text-xl ms-2" />
+              ) : (
+                <VscTriangleDown className="text-xl ms-2" />
+              )}
+            </button>
+            <ul
+              tabIndex={0}
+              className={
+                filterState === true
+                  ? "shadow bg-[#565381] rounded-xl w-52 absolute z-50 right-0 menu p-2 text-center text-white"
+                  : "hidden"
+              }
+            >
+              <li
+                onClick={handleAscSort}
+                className="hover:bg-blue-100 hover:text-[#090748] mb-2 rounded-lg text-lg font-semibold"
+              >
+                <a>Price: Low to High</a>
+              </li>
+              <li
+                onClick={handleDesSort}
+                className="hover:bg-blue-100 hover:text-[#090748] mt-2 rounded-xl text-lg font-semibold"
+              >
+                <a>Price: High to Low</a>
+              </li>
+            </ul>
+          </div>
+        </div>
         {loading === true ? (
           <div className="my-14 flex justify-center">
             <div

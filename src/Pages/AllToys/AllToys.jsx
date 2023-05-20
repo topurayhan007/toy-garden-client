@@ -94,9 +94,27 @@ const AllToys = () => {
 
               <tbody className="">
                 {/* Row */}
-                {slicedToys.map((toy) => (
-                  <AllToyRow key={toy._id} toy={toy}></AllToyRow>
-                ))}
+                {slicedToys.length > 0 ? (
+                  <>
+                    {slicedToys.map((toy) => (
+                      <AllToyRow key={toy._id} toy={toy}></AllToyRow>
+                    ))}
+                  </>
+                ) : (
+                  <tr className="w-full">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                    <td className="">
+                      <div className="w-full flex justify-center">
+                        <h2 className="text-2xl text-error">No data found</h2>
+                      </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
