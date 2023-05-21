@@ -1,14 +1,14 @@
 .react-tabs__tab-list {
-  border-bottom: 3px solid #2f0743;
+  border-bottom: 5px solid #2f0743;
   border-radius: 100%;
   /* display: flex; */
 }
 
 .react-tabs__tab {
-  border: 3px solid transparent;
+  border: 5px solid transparent;
   border-bottom: none;
   font-size: 22px;
-  color: #2F0743;
+  color: #2f0743;
   font-weight: 700;
   padding: 13px 20px;
 }
@@ -22,7 +22,7 @@
 
 @media only screen and (max-width: 576px) {
   .react-tabs__tab-list {
-    border-bottom: 1px solid #2f0743;
+    border-bottom: 2px solid #2f0743;
     border-radius: 0%;
     /* display: flex; */
   }

@@ -4,7 +4,7 @@ import "./Gallery.css";
 const Gallery = () => {
   return (
     <div className="md:my-32 mt-10 mb-14">
-      <h2 className="text-xl md:text-5xl pb-6 md:pb-12 font-bold text-[#2F0743]">
+      <h2 className="text-2xl md:text-5xl pb-6 md:pb-12 font-bold text-[#2F0743]">
         Our Featured Gallery
       </h2>
       <div className="mx-auto max-w-7xl">

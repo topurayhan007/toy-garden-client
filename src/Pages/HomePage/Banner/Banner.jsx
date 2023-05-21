@@ -17,9 +17,9 @@ const Banner = () => {
                 />
               </div>
               <div className="flex flex-col justify-center items-left">
-                <h1 className="lg:text-8xl text-4xl text-transparent bg-clip-text py-3 bg-gradient-to-r from-[#090748]  to-[#2F0743] text-left font-extrabold">
+                <h1 className="lg:text-8xl text-4xl text-transparent drop-shadow-[0_1.5px_1.5px_rgba(0,0,0,0.8)] bg-clip-text py-3 bg-gradient-to-r from-[#090748]  to-[#2F0743] text-left font-extrabold">
                   Elevate Your Collection <br />{" "}
-                  <span className="md:text-7xl text-3xl md:font-bold font-semibold">
+                  <span className="md:text-7xl text-3xl md:font-bold font-semibold text-[#ffad00] drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                     with Premium
                   </span>{" "}
                   <br /> Action Figures

@@ -84,8 +84,8 @@ const ToyCategorySection = () => {
   };
 
   return (
-    <div className="">
-      <h2 className="text-xl md:text-5xl pb-6 md:pb-12 font-bold text-[#2F0743]">
+    <div className="md:mb-24 mb-12">
+      <h2 className="text-2xl md:text-5xl pb-6 md:pb-12 font-bold text-[#2F0743]">
         Our Premium Collection
       </h2>
       <div className="max-w-screen-xl mx-auto px-3 justify-center items-center mt-3">
