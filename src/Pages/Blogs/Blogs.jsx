@@ -61,8 +61,9 @@ const Blogs = () => {
                   1
                 </div>
                 <p className="text-white  text-xl font-bold">
-                  Difference between <code>'uncontrolled'</code> and{" "}
-                  <code>'controlled'</code> components?
+                  What is an <code>'access token'</code> and{" "}
+                  <code>'refresh token'</code>? How do they work and where
+                  should we store them on the client-side?
                 </p>
                 <button
                   onClick={handleAcc1}
@@ -78,30 +79,38 @@ const Blogs = () => {
                     : "flex items-center py-5"
                 }
               >
-                <p className="mx-3 md:mx-11  text-start leading-loose tracking-wide ">
+                <p className="mx-3 md:mx-11  text-start leading-loose tracking-wide text-lg">
                   <code className="bg-purple-50 p-1 rounded font-bold">
-                    'Uncontrolled'
+                    'Access token'
                   </code>{" "}
-                  components are those which does not need for its parent to
-                  influence it. It is managed by the DOM rather than a state. On
-                  the other hand,
+                  and{" "}
                   <code className="bg-purple-50 p-1 rounded font-bold">
-                    'Controlled'
+                    'refresh token'
                   </code>{" "}
-                  component's value is controlled using state, and the parent
-                  component alter's itss behavior. Whenever a component's state
-                  changes due to the user writing something, the form element is
-                  updated with the new value. Both type of component's are used
-                  to render form elements. The difference is{" "}
+                  both are a type of token used as a credential to authenticate
+                  users. Although the difference between the two is one is long
+                  term another is short term.{" "}
                   <code className="bg-purple-50 p-1 rounded font-bold">
-                    'Controlled'
+                    'Access token'
                   </code>{" "}
-                  components can get the value whenever needed as it updates on
-                  change, however{" "}
+                  expires frequently whereas the{" "}
                   <code className="bg-purple-50 p-1 rounded font-bold">
-                    'Uncontrolled'
+                    'refresh token'
                   </code>{" "}
-                  components requires you to use a reference to get the value.
+                  stays for a longer period of time. In addition these are used
+                  to authenticate client API request. If someone is trying to
+                  access data using a API which requires just a email or a id
+                  field then everyone will be able to access each other's
+                  information, to restrict that we use{" "}
+                  <code className="bg-purple-50 p-1 rounded font-bold">
+                    'access token'
+                  </code>{" "}
+                  and{" "}
+                  <code className="bg-purple-50 p-1 rounded font-bold">
+                    'refresh token'
+                  </code>{" "}
+                  . These tokens can be stored in varies ways namely; HTTP only
+                  cookies, local or session storage or even in memory.
                 </p>
               </div>
             </div>
@@ -118,8 +127,7 @@ const Blogs = () => {
                   2
                 </div>
                 <p className="text-white  text-xl font-bold">
-                  Difference between <code>'uncontrolled'</code> and{" "}
-                  <code>'controlled'</code> components?
+                  Compare <code>'SQL'</code> and <code>'NoSQL'</code> databases?
                 </p>
                 <button
                   onClick={handleAcc2}
@@ -135,30 +143,46 @@ const Blogs = () => {
                     : "flex items-center py-5"
                 }
               >
-                <p className="mx-3 md:mx-11  text-start leading-loose tracking-wide ">
+                <p className="mx-3 md:mx-11  text-start leading-loose tracking-wide text-lg">
                   <code className="bg-purple-50 p-1 rounded font-bold">
-                    'Uncontrolled'
+                    'SQL'
                   </code>{" "}
-                  components are those which does not need for its parent to
-                  influence it. It is managed by the DOM rather than a state. On
-                  the other hand,
+                  databases are constructed using a relational data model
+                  whereas,{" "}
                   <code className="bg-purple-50 p-1 rounded font-bold">
-                    'Controlled'
+                    'NoSQL'
                   </code>{" "}
-                  component's value is controlled using state, and the parent
-                  component alter's itss behavior. Whenever a component's state
-                  changes due to the user writing something, the form element is
-                  updated with the new value. Both type of component's are used
-                  to render form elements. The difference is{" "}
+                  follow a object like approach, more specifically "document" or
+                  "key-value". In addition,{" "}
                   <code className="bg-purple-50 p-1 rounded font-bold">
-                    'Controlled'
+                    'SQL'
                   </code>{" "}
-                  components can get the value whenever needed as it updates on
-                  change, however{" "}
+                  ensures data integrity using relations whereas,{" "}
                   <code className="bg-purple-50 p-1 rounded font-bold">
-                    'Uncontrolled'
+                    'NoSQL'
                   </code>{" "}
-                  components requires you to use a reference to get the value.
+                  focuses on flexiblity allowing dynamic changes to the data
+                  model or structure.{" "}
+                  <code className="bg-purple-50 p-1 rounded font-bold">
+                    'SQL'
+                  </code>{" "}
+                  is more scalable to vertical data as horizontal scaling is
+                  resource intensive. On the other hand,{" "}
+                  <code className="bg-purple-50 p-1 rounded font-bold">
+                    'NoSQL'
+                  </code>{" "}
+                  is more suitable for large scalable applications due to their
+                  nature of being horizontally scalable. In terms of queries,{" "}
+                  <code className="bg-purple-50 p-1 rounded font-bold">
+                    'SQL'
+                  </code>{" "}
+                  databases uses SQL to perform CRUD operations. Whereas,{" "}
+                  <code className="bg-purple-50 p-1 rounded font-bold">
+                    'NoSQL'
+                  </code>{" "}
+                  depends on different types of query languages or API to
+                  perform CRUD operations using queries similar to JSON data
+                  manipulation.
                 </p>
               </div>
             </div>
@@ -175,8 +199,7 @@ const Blogs = () => {
                   3
                 </div>
                 <p className="text-white  text-xl font-bold">
-                  Difference between <code>'uncontrolled'</code> and{" "}
-                  <code>'controlled'</code> components?
+                  What is <code>'ExpressJS'</code> and <code>'NestJS'</code>?
                 </p>
                 <button
                   onClick={handleAcc3}
@@ -192,30 +215,42 @@ const Blogs = () => {
                     : "flex items-center py-5"
                 }
               >
-                <p className="mx-3 md:mx-11  text-start leading-loose tracking-wide ">
+                <p className="mx-3 md:mx-11  text-start leading-loose tracking-wide text-lg">
                   <code className="bg-purple-50 p-1 rounded font-bold">
-                    'Uncontrolled'
+                    'ExpressJS'
                   </code>{" "}
-                  components are those which does not need for its parent to
-                  influence it. It is managed by the DOM rather than a state. On
-                  the other hand,
+                  and{" "}
                   <code className="bg-purple-50 p-1 rounded font-bold">
-                    'Controlled'
+                    'NextJS'
                   </code>{" "}
-                  component's value is controlled using state, and the parent
-                  component alter's itss behavior. Whenever a component's state
-                  changes due to the user writing something, the form element is
-                  updated with the new value. Both type of component's are used
-                  to render form elements. The difference is{" "}
+                  are both NodeJS framework. However,{" "}
                   <code className="bg-purple-50 p-1 rounded font-bold">
-                    'Controlled'
+                    'ExpressJS'
                   </code>{" "}
-                  components can get the value whenever needed as it updates on
-                  change, however{" "}
+                  is built with JavaScript whereas,{" "}
                   <code className="bg-purple-50 p-1 rounded font-bold">
-                    'Uncontrolled'
+                    'NestJS'
                   </code>{" "}
-                  components requires you to use a reference to get the value.
+                  is built with TypeScript.{" "}
+                  <code className="bg-purple-50 p-1 rounded font-bold">
+                    'ExpressJS'
+                  </code>{" "}
+                  is more flexible towards providing simple ways to build APIs
+                  or servers. Moreover, it is high performing and lightweight.
+                  In contrast,{" "}
+                  <code className="bg-purple-50 p-1 rounded font-bold">
+                    'NestJS'
+                  </code>{" "}
+                  is more maintainable, scalable and efficient in building
+                  server side applications. While{" "}
+                  <code className="bg-purple-50 p-1 rounded font-bold">
+                    'ExpressJS'
+                  </code>{" "}
+                  is simple and effective,{" "}
+                  <code className="bg-purple-50 p-1 rounded font-bold">
+                    'NestJS'
+                  </code>{" "}
+                  provides more suitability towards complex applications.
                 </p>
               </div>
             </div>
@@ -232,8 +267,7 @@ const Blogs = () => {
                   4
                 </div>
                 <p className="text-white  text-xl font-bold">
-                  Difference between <code>'uncontrolled'</code> and{" "}
-                  <code>'controlled'</code> components?
+                  What is MongoDB <code>'aggregate'</code> and how does it work?
                 </p>
                 <button
                   onClick={handleAcc4}
@@ -249,30 +283,20 @@ const Blogs = () => {
                     : "flex items-center py-5"
                 }
               >
-                <p className="mx-3 md:mx-11  text-start leading-loose tracking-wide ">
+                <p className="mx-3 md:mx-11  text-start leading-loose tracking-wide text-lg">
+                  MongoDB{" "}
                   <code className="bg-purple-50 p-1 rounded font-bold">
-                    'Uncontrolled'
+                    'aggregate'
                   </code>{" "}
-                  components are those which does not need for its parent to
-                  influence it. It is managed by the DOM rather than a state. On
-                  the other hand,
+                  is a powerful tool that provides the users to perform advanced
+                  or complex queries more efficiently.{" "}
                   <code className="bg-purple-50 p-1 rounded font-bold">
-                    'Controlled'
+                    'Aggregate'
                   </code>{" "}
-                  component's value is controlled using state, and the parent
-                  component alter's itss behavior. Whenever a component's state
-                  changes due to the user writing something, the form element is
-                  updated with the new value. Both type of component's are used
-                  to render form elements. The difference is{" "}
-                  <code className="bg-purple-50 p-1 rounded font-bold">
-                    'Controlled'
-                  </code>{" "}
-                  components can get the value whenever needed as it updates on
-                  change, however{" "}
-                  <code className="bg-purple-50 p-1 rounded font-bold">
-                    'Uncontrolled'
-                  </code>{" "}
-                  components requires you to use a reference to get the value.
+                  can be used to sort, group, filter any many more operations in
+                  a flexible and efficient manner. It uses a pipeline stage to
+                  the data or collection, manipulating and transforming the data
+                  as it moves down the pipeline.
                 </p>
               </div>
             </div>
