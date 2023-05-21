@@ -9,7 +9,7 @@ const ToyCategoryCard = ({ toy, handleOpenModal }) => {
   const { _id, name, pictureURL, price, rating } = toy;
 
   return (
-    <div>
+    <div data-aos="zoom-in">
       <div className="card card-compact md:w-96 w-full bg-base-100 shadow-md border border-slate-200 hover:scale-105 transition-transform duration-300 ease-out transform">
         <LazyLoad height={450} offset={200} threshold={0.95} className="">
           <figure className="h-[450px] rounded-tr-2xl rounded-tl-2xl">
