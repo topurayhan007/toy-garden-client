@@ -17,7 +17,7 @@ const DownloadAppSection = () => {
               Our App
             </h3>
             <div className=" mx-auto mt-16">
-              <button className="flex bg-black text-white justify-center items-center w-60 px-3 py-4 rounded-2xl gap-3">
+              <button className="flex bg-black text-white justify-center items-center w-60 px-3 py-3 rounded-2xl gap-3">
                 <div>
                   <img src="./assets/images/playstore.png" alt="" />
                 </div>
@@ -28,7 +28,7 @@ const DownloadAppSection = () => {
                   </p>
                 </div>
               </button>
-              <button className="mt-6 flex bg-black text-white justify-center items-center font-[Poppins] w-60 px-3 py-4 rounded-2xl gap-3">
+              <button className="mt-6 flex bg-black text-white justify-center items-center font-[Poppins] w-60 px-3 py-3 rounded-2xl gap-3">
                 <div>
                   <img src="./assets/images/appstore.png" alt="" />
                 </div>

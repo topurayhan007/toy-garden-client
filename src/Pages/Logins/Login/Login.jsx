@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { signIn, signInWithGoogle } = useContext(AuthContext);
@@ -67,6 +68,9 @@ const Login = () => {
 
   return (
     <div className="mt-10 pb-10  px-3 md:px-0">
+      <Helmet>
+        <title>Toy Garden | Login</title>
+      </Helmet>
       <div className="card flex-shrink-0 w-full border border-purple-100 max-w-md mx-auto mt-16 drop-shadow-sm shadow-md bg-[#fffeff]">
         <p className="text-3xl font-bold text-center card-body pb-5">Login</p>
 
