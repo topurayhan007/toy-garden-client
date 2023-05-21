@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <div className="bg-gradient-to-b from-[#2F0743] to-[#090748] md:mt-60 mt-20">
       <div className="mx-auto max-w-7xl pb-12 pt-24">
-        <footer className="p-10  text-white grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 md:gap-0">
+        <footer className="md:p-10 px-5 pb-5  text-white grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 md:gap-0">
           <div className="flex flex-col gap-3">
             <span className="font-extrabold text-[#fcd787] text-2xl">
               Company
@@ -40,17 +40,8 @@ const Footer = () => {
             <a className="link font-bold text-lg link-hover">Cookie Policy</a>
           </div>
         </footer>
-        <footer className="footer p-10 text-white">
-          <div className=" flex flex-col gap-8">
-            <div className="flex items-center">
-              <img src="./assets/logos/logo.png" className="w-20" alt="" />
-              <p className="">
-                <span className="text-5xl tracking-wide font-extrabold font-frosty">
-                  {" "}
-                  Toy Garden
-                </span>
-              </p>
-            </div>
+        <footer className="footer md:p-10 px-5 pt-5 text-white">
+          <div className="flex flex-col gap-10 items order-2 md:order-1">
             <div>
               <span className="font-extrabold text-[#fcd787] text-2xl">
                 Social
@@ -73,10 +64,7 @@ const Footer = () => {
                 </a>
               </div>
             </div>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <div className="mt-8">
+            <div className="">
               <span className="font-extrabold text-[#fcd787] text-2xl">
                 Newsletter
               </span>
@@ -89,7 +77,7 @@ const Footer = () => {
                 <div className="relative">
                   <input
                     type="text"
-                    placeholder="username@site.com"
+                    placeholder="abcd@gmail.com"
                     className="input input-bordered w-full pr-16"
                   />
                   <button className="btn bg-[#ffad00] border-0 text-black absolute top-0 right-0 rounded-l-none">
@@ -99,16 +87,29 @@ const Footer = () => {
               </div>
             </div>
           </div>
+          <div className=" flex flex-col gap-8 order-1 md:order-2">
+            <div className="flex items-center">
+              <img src="./assets/logos/logo.png" className="w-20" alt="" />
+              <p className="">
+                <span className="text-5xl tracking-wide font-extrabold font-frosty">
+                  {" "}
+                  Toy Garden
+                </span>
+              </p>
+            </div>
+          </div>
         </footer>
       </div>
-      <footer className="footer footer-center p-4 bg-[#2F0743] text-white text-bold text-xl">
+      <footer className="footer footer-center md:p-4 py-4 bg-[#2F0743] text-white text-bold text-xl">
         <div>
-          <p>
-            Copyright © 2023. All Right Reserved by{" "}
+          <p className="flex justify-center items-center text-base">
+            Copyright{" "}
+            <span className="md:text-5xl text-4xl inline px-1 md:px-2">©</span> 2023.
+            All Right Reserved by{" "}
             <code>
               <a
                 href="https://www.linkedin.com/in/topurayhan007/"
-                className="text-[#fcd787] px-3"
+                className="text-[#fcd787] md:px-3 ps-1"
               >
                 topurayhan007
               </a>
