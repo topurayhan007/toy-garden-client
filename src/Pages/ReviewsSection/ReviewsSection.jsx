@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import ReviewCard from "../ReviewCard/ReviewCard";
 
@@ -46,10 +47,10 @@ const ReviewsSection = () => {
   return (
     <div className="my-32">
       <div className="max-w-7xl mx-auto">
-        <h2 className="font-bold text-5xl text-[#2F0743] mb-16">
+        <h2 className="text-2xl md:text-5xl pb-6 md:pb-12 font-bold text-[#2F0743]">
           Our Customer Reviews
         </h2>
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5 mt-8 px-10 md:px-0">
           {reviews.map((review) => (
             <ReviewCard key={review.id} review={review}></ReviewCard>
           ))}

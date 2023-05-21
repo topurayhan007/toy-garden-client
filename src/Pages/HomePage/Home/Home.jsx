@@ -1,3 +1,4 @@
+import DownloadAppSection from "../../DownloadAppSection/DownloadAppSection";
 import ReviewsSection from "../../ReviewsSection/ReviewsSection";
 import Banner from "../Banner/Banner";
 import Gallery from "../Gallery/Gallery";
@@ -14,6 +15,7 @@ const Home = () => {
       <Gallery></Gallery>
       <ToyCategorySection></ToyCategorySection>
       <ReviewsSection></ReviewsSection>
+      <DownloadAppSection></DownloadAppSection>
     </div>
   );
 };

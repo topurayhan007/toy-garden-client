@@ -7,6 +7,7 @@ export default {
         reey: ["Reey", "sans-serif"],
         frosty: ["Frosty", "sans-serif"],
         tooney: ["TooneyNoodle", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
       },
     },
   },
