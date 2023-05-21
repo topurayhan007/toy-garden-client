@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AllToyRow from "../AllToyRow/AllToyRow";
 import { FiSearch } from "react-icons/fi";
+import { Helmet } from "react-helmet-async";
 
 const AllToys = () => {
   const [allToys, setAllToys] = useState([]);
@@ -44,6 +45,9 @@ const AllToys = () => {
 
   return (
     <div className="mb-24">
+      <Helmet>
+        <title>Toy Garden | All Toys</title>
+      </Helmet>
       <div className="mt-24 mx-auto max-w-7xl text-center">
         <h2 className="font-bold text-5xl text-[#2F0743] mb-8">All Toys</h2>
         <div className="flex justify-end">

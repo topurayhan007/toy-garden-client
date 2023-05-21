@@ -3,6 +3,7 @@ import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const AddAToy = () => {
   const { user } = useContext(AuthContext);
@@ -67,6 +68,9 @@ const AddAToy = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Toy Garden | Add A Toy</title>
+      </Helmet>
       <div className="mt-10 pb-10  px-3 md:px-0">
         <div className="card flex-shrink-0 w-full border border-purple-100 max-w-4xl mx-auto mt-16 drop-shadow-sm shadow-md bg-[#fffeff]">
           <p className="text-5xl font-bold text-center text-[#2F0743] card-body pb-5 mt-4">

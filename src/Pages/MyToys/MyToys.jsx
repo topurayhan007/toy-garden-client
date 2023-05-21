@@ -5,6 +5,7 @@ import { IoMdCloseCircle } from "react-icons/io";
 import { FaLongArrowAltUp, FaLongArrowAltDown } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { VscTriangleDown, VscTriangleUp } from "react-icons/vsc";
+import { Helmet } from "react-helmet-async";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
@@ -160,6 +161,9 @@ const MyToys = () => {
 
   return (
     <div className="">
+      <Helmet>
+        <title>Toy Garden | My Toys</title>
+      </Helmet>
       <div className="my-24 mx-auto max-w-7xl text-center">
         <h2 className="font-bold text-5xl text-[#2F0743] mb-8">
           My Added Toys

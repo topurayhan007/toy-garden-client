@@ -1,12 +1,16 @@
 import { useLoaderData } from "react-router-dom";
 import Rating from "react-rating";
 import { BsStarFill, BsStar } from "react-icons/bs";
+import { Helmet } from "react-helmet-async";
 
 const ViewDetails = () => {
   const toyDetails = useLoaderData();
 
   return (
     <div className=" ">
+      <Helmet>
+        <title>Toy Garden | Toy Details</title>
+      </Helmet>
       <div className="flex justify-center mt-16 mb-5">
         <h2 className="card-title md:text-5xl text-purple-900">
           {toyDetails.name}
