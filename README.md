@@ -25,12 +25,28 @@
 - Add A Toys page has function to add a new toy.
 - There is a Blogs page, which has a custom built accordion to show some of the blogs written by me.
 
-![Page Screenshot1](./public/screenshots/Chef-s-Den.png)
+![Page Screenshot1](./public/screenshots/Toy-Garden-Home.png)
 
-![Page Screenshot2](./public/screenshots/Chef-s-Den-1.png)
+![Page Screenshot1](./public/screenshots/Toy-Garden-Login.png)
 
-![Page Screenshot3](./public/screenshots/Chef-s-Den-2.png)
+![Page Screenshot1](./public/screenshots/Toy-Garden-Register.png)
 
-![Page Screenshot4](./public/screenshots/Chef-s-Den-3.png)
+![Page Screenshot1](./public/screenshots/Toy-Garden-Home-1.png)
 
-![Page Screenshot5](./public/screenshots/Chef-s-Den-4.png)
+![Page Screenshot1](./public/screenshots/Toy-Garden-Blogs.png)
+
+![Page Screenshot1](./public/screenshots/Toy-Garden-All-Toys.png)
+
+![Page Screenshot1](./public/screenshots/Toy-Garden-My-Toys.png)
+
+![Page Screenshot1](./public/screenshots/Toy-Garden-Add-A-Toy.png)
+
+![Page Screenshot1](./public/screenshots/Toy-Garden-Toy-Details.png)
+
+![Page Screenshot1](./public/screenshots/Toy-Garden-My-Toys-1.png)
+
+![Page Screenshot1](./public/screenshots/Toy-Garden-My-Toys-2.png)
+
+![Page Screenshot1](./public/screenshots/Toy-Garden-My-Toys-3.png)
+
+![Page Screenshot1](./public/screenshots/Toy-Garden-Errorpage.png)
