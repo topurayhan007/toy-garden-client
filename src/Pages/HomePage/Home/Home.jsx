@@ -1,3 +1,4 @@
+import ReviewsSection from "../../ReviewsSection/ReviewsSection";
 import Banner from "../Banner/Banner";
 import Gallery from "../Gallery/Gallery";
 import ToyCategorySection from "../ToyCategorySection/ToyCategorySection";
@@ -9,9 +10,10 @@ const Home = () => {
       <Helmet>
         <title>Toy Garden | Home</title>
       </Helmet>
-      <Banner></Banner> 
+      <Banner></Banner>
       <Gallery></Gallery>
       <ToyCategorySection></ToyCategorySection>
+      <ReviewsSection></ReviewsSection>
     </div>
   );
 };
