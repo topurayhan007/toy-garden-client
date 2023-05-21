@@ -101,7 +101,7 @@ const Header = () => {
         <div className="navbar-end">
           {user === null ? (
             <Link to="/login">
-              <button className="btn bg-transparent border-[2.5px] border-white rounded-full px-8 hover:bg-[#ea6802] hover:text-black hover:border-[#ea6802] text-white font-bold normal-case text-xl">
+              <button className="btn bg-transparent border-[2.5px] border-white rounded-full px-8 hover:bg-[#ffad00] hover:text-black hover:border-[#ffad00] text-white font-bold normal-case text-xl">
                 Login
               </button>
             </Link>
