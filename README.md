@@ -27,26 +27,26 @@
 
 ![Page Screenshot1](./public/screenshots/Toy-Garden-Home.png)
 
-![Page Screenshot1](./public/screenshots/Toy-Garden-Login.png)
+![Page Screenshot2](./public/screenshots/Toy-Garden-Login.png)
 
-![Page Screenshot1](./public/screenshots/Toy-Garden-Register.png)
+![Page Screenshot3](./public/screenshots/Toy-Garden-Register.png)
 
-![Page Screenshot1](./public/screenshots/Toy-Garden-Home-1.png)
+![Page Screenshot4](./public/screenshots/Toy-Garden-Home-1.png)
 
-![Page Screenshot1](./public/screenshots/Toy-Garden-Blogs.png)
+![Page Screenshot5](./public/screenshots/Toy-Garden-Blogs.png)
 
-![Page Screenshot1](./public/screenshots/Toy-Garden-All-Toys.png)
+![Page Screenshot6](./public/screenshots/Toy-Garden-All-Toys.png)
 
-![Page Screenshot1](./public/screenshots/Toy-Garden-My-Toys.png)
+![Page Screenshot7](./public/screenshots/Toy-Garden-My-Toys.png)
 
-![Page Screenshot1](./public/screenshots/Toy-Garden-Add-A-Toy.png)
+![Page Screenshot8](./public/screenshots/Toy-Garden-Add-A-Toy.png)
 
-![Page Screenshot1](./public/screenshots/Toy-Garden-Toy-Details.png)
+![Page Screenshot9](./public/screenshots/Toy-Garden-Toy-Details.png)
 
-![Page Screenshot1](./public/screenshots/Toy-Garden-My-Toys-1.png)
+![Page Screenshot10](./public/screenshots/Toy-Garden-My-Toys-1.png)
 
-![Page Screenshot1](./public/screenshots/Toy-Garden-My-Toys-2.png)
+![Page Screenshot11](./public/screenshots/Toy-Garden-My-Toys-2.png)
 
-![Page Screenshot1](./public/screenshots/Toy-Garden-My-Toys-3.png)
+![Page Screenshot12](./public/screenshots/Toy-Garden-My-Toys-3.png)
 
-![Page Screenshot1](./public/screenshots/Toy-Garden-Errorpage.png)
+![Page Screenshot13](./public/screenshots/Toy-Garden-Errorpage.png)
